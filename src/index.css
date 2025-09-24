@@ -2,41 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* MeetWise Beach-Inspired Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Beach-inspired color palette */
+    --background: 210 20% 98%;
+    --foreground: 210 40% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 8%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Ocean Blue Primary */
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Sandy Beige Secondary */
+    --secondary: 45 25% 90%;
+    --secondary-foreground: 210 40% 8%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 20% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Teal Accent */
+    --accent: 172 66% 50%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 210 30% 90%;
+    --input: 210 30% 95%;
+    --ring: 199 89% 48%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Custom MeetWise tokens */
+    --ocean-light: 199 95% 85%;
+    --ocean-dark: 199 89% 35%;
+    --sand: 45 35% 88%;
+    --sand-dark: 45 25% 75%;
+    --teal-light: 172 66% 70%;
+    --glass: 0 0% 100% / 0.1;
+    
+    /* Gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-sand: linear-gradient(135deg, hsl(var(--sand)), hsl(var(--sand-dark)));
+    --gradient-glass: linear-gradient(135deg, hsl(var(--glass)), hsl(0 0% 100% / 0.05));
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 24px hsl(var(--primary) / 0.1);
+    --shadow-ocean: 0 8px 32px hsl(var(--primary) / 0.15);
+    --shadow-glass: 0 8px 32px hsl(210 40% 8% / 0.08);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +121,69 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--ocean-light)));
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Glass morphism effects */
+  .glass-card {
+    @apply backdrop-blur-md bg-white/80 border border-white/20;
+    box-shadow: var(--shadow-glass);
+  }
+  
+  .glass-nav {
+    @apply backdrop-blur-md bg-white/95 border-b border-white/20;
+  }
+  
+  /* Ocean gradient backgrounds */
+  .ocean-gradient {
+    background: var(--gradient-ocean);
+  }
+  
+  .sand-gradient {
+    background: var(--gradient-sand);
+  }
+  
+  /* Smooth animations */
+  .smooth-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .fade-in {
+    @apply animate-in fade-in-0 duration-500;
+  }
+  
+  .slide-up {
+    @apply animate-in slide-in-from-bottom-4 duration-500;
+  }
+  
+  /* Meeting card styles */
+  .meeting-card {
+    @apply glass-card rounded-xl p-6 smooth-hover;
+  }
+  
+  .meeting-card:hover {
+    @apply scale-105 shadow-lg;
+    box-shadow: var(--shadow-ocean);
+  }
+  
+  /* Button variants */
+  .btn-ocean {
+    @apply ocean-gradient text-white font-medium px-6 py-3 rounded-lg smooth-hover;
+  }
+  
+  .btn-ocean:hover {
+    @apply scale-105 shadow-lg;
+    box-shadow: var(--shadow-ocean);
+  }
+  
+  .btn-glass {
+    @apply glass-card text-primary font-medium px-6 py-3 rounded-lg smooth-hover;
+  }
+  
+  .btn-glass:hover {
+    @apply scale-105;
   }
 }
