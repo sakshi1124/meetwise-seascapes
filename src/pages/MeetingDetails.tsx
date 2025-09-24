@@ -87,7 +87,7 @@ const MeetingDetails = () => {
               <h2 className="text-2xl font-semibold mb-6 ocean-gradient bg-clip-text text-transparent">
                 Meeting Summary
               </h2>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-foreground text-lg leading-relaxed font-medium">
                 {meeting.summary}
               </p>
             </div>
